@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neatcli"
+version = "0.1.0"
+description = "A simple CLI app framework for Python"
+authors = [{ name = "las-r" }]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+
+[project.urls]
+Repository = "https://github.com/las-r/neatcli"
+
+[tool.setuptools.packages.find]
+where = ["src/"]
+include = ["ncli*"]
