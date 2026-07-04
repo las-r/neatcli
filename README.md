@@ -13,19 +13,26 @@ The `App` class serves as the entry point and router for your CLI tool. Commands
 
 ### Basic Usage
 ```python
-from neatcli import App
-
 app = App()
 
 @app.command
-@app.option("amount", short="a", default=1)
-@app.help("Greets someone neatly.")
-def greet(options, name: str):
-    for _ in range(options.amount):
-        print(f"Hello, {name}!")
+def version(opts):
+    """Print version"""
+    print("1.0.0")
 
-if __name__ == "__main__":
-    app.run()
+db = app.group("db", help="Database management commands")
+
+@db.command
+@app.argument("name", help="Migration name")
+@app.help("Create a new migration")
+def create(opts, name):
+    print(f"Creating migration: {name}")
+
+@db.command
+@app.option("force", short="f", default=False, help="Force the reset")
+@app.help("Reset the database")
+def reset(opts):
+    print(f"Resetting db (force={opts.force})")
 ```
 
 ### Routing & Options API
