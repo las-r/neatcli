@@ -13,6 +13,9 @@ The `App` class serves as the entry point and router for your CLI tool. Commands
 
 ### Basic Usage
 ```python
+import sys
+from ncli import App
+
 app = App()
 
 @app.command
@@ -33,6 +36,8 @@ def create(opts, name):
 @app.help("Reset the database")
 def reset(opts):
     print(f"Resetting db (force={opts.force})")
+
+app.run(sys.argv[1:])
 ```
 
 ### Routing & Options API

@@ -102,7 +102,7 @@ class Group:
 
     def print_group_help(self, prefix: str = ""):
         full_prefix = f"{prefix}{self.name} ".strip() + " " if prefix else f"{self.name} "
-        print(f"Usage: python -m app {full_prefix.strip()}<subcommand> [options]")
+        print(f"Usage: python -m app {full_prefix.strip()} <subcommand> [options]")
         if self.help:
             print(f"\n{self.help}")
         if self.groups:
@@ -113,7 +113,7 @@ class Group:
             print("\nCommands:")
             for name, cmd in self.commands.items():
                 print(f"  {cmd.usage_line():<28} {cmd.help}")
-        print(f"\nRun 'python -m app {full_prefix.strip()}<subcommand> --help' for details.")
+        print(f"\nRun 'python -m app {full_prefix.strip()} <subcommand> --help' for details.")
 
 
 class App:
@@ -144,7 +144,7 @@ class App:
             print("\nAvailable commands:")
             for name, cmd in self.commands.items():
                 print(f"  {cmd.usage_line():<28} {cmd.help}")
-        print("\nRun 'python -m app <command> --help' for details on a specific command.")
+        print("\nRun 'python -m app <command / help> --help' for details on a specific command.")
 
     def _resolve(self, args: List[str]):
         """
