@@ -1,5 +1,5 @@
-# NeatCLI
-A simple yet powerful framework for quickly and reliably writing command-line applications in Python.
+<h1 style="text-align: center">NeatCli</h1>
+<p style="text-align: center">A simple yet powerful framework for quickly and reliably writing command-line applications in Python.</p>
 
 ## Architecture
 NeatCLI is organized into three distinct, decoupled toolkits to manage every aspect of a command-line application without external dependencies:
