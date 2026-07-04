@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "neatcli"
-version = "0.1.0"
+version = "0.0.0" # this is a placeholder, the pypi version is defined at release
 description = "A simple CLI app framework for Python."
 authors = [{ name = "las-r" }]
 readme = "README.md"
