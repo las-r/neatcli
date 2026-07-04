@@ -1,0 +1,42 @@
+name: publish to pypi
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    if: startsWith(github.event.release.tag_name, 'v') && !startsWith(github.event.release.tag_name, 'vsc')
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/aergia-lang/
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Overwrite Version in pyproject.toml
+      run: |
+        VERSION=${GITHUB_REF_NAME#v}
+        sed -i "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
+        echo "Forced version to $VERSION"
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Build Tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+
+    - name: Build Wheel and Source Tarball
+      run: python -m build
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
