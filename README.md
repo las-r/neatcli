@@ -43,7 +43,7 @@ app.run(sys.argv[1:])
 ### Routing & Options API
 * **`@app.command`**: Registers the decorated function as a runnable command. The function's name becomes the subcommand keyword.
 * **`@app.option(name, short=None, default=None)`**: Attaches a flag option to the command. Options are bundled and passed as the first argument (`options`) to the target function.
-* **`@app.help(text)`**: Attaches a descriptive help string to the command for documentation generation.
+* **`@app.help(text)`**: Attaches a descriptive help string to the command for documentation generation. A docstring does the same thing, but the decorator takes priority over it.
 
 ## Interactive Inputs (`Prompt`)
 `Prompt` provides utilities for gathering input dynamically mid-execution, enforcing validations, and safely processing secure variables.
